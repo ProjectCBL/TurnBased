@@ -3,7 +3,8 @@ guid: 5bc3bd8ff1f97b1f6b571edf3e8e7f3d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - buildingBLock: {fileID: 4782017377224301651, guid: c1e5a17cd6c57b3c5810e03b13b40295, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

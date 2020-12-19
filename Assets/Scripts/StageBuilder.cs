@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class StageBuilder : MonoBehaviour
 {
+
+    public int length = 8;
+    public int width = 8;
+    public GameObject buildingBLock;
+
+    private Vector3[] groundBlockPositions;
+
+    private void Awake()
+    {
+        GenerateGroundBlockPositions();
+    }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         
     }
@@ -15,4 +27,24 @@ public class StageBuilder : MonoBehaviour
     {
         
     }
+
+    void GenerateGroundBlockPositions()
+    {
+
+        float x = 0.0f;
+        float z = 0.0f;
+
+        groundBlockPositions = new Vector3[length*width];
+
+        for(int i = 0; i < width*length; i++)
+        {
+            groundBlockPositions[i] = new Vector3(x, 0.0f, z);
+
+            x += (x < length - 1) ? 1 : -(x);
+            z += (x == length - 1) ? 1 : 0;
+
+        }
+
+    }
+
 }
