@@ -8,12 +8,14 @@ public class StageBuilder : MonoBehaviour
     public int length = 8;
     public int width = 8;
     public GameObject buildingBLock;
+    public GameObject startingPoint;
 
     private Vector3[] groundBlockPositions;
 
     private void Awake()
     {
         GenerateGroundBlockPositions();
+        PlaceGroundStartingPoint();
     }
 
     // Start is called before the first frame update
@@ -22,13 +24,20 @@ public class StageBuilder : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private IEnumerator CreateGroundFloor(){
+
+        for(int i = 0; i < groundBlockPositions.Length; i++){
+            Instantiate(buildingBLock, groundBlockPositions[i], Quaternion.identity, startingPoint.transform);
+            yield return new WaitForSeconds(0.25f);
+        }
+
     }
 
-    void GenerateGroundBlockPositions()
+    private void PlaceGroundStartingPoint(){
+        startingPoint.transform.position = new Vector3(length/2, 0.0f, width/2);
+    }
+
+    private void GenerateGroundBlockPositions()
     {
 
         float x = 0.0f;
